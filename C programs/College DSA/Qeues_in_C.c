@@ -1,94 +1,98 @@
 // Sachin - IT - 37
 #include<stdio.h>
 
-int Queue[100];
+void Enqueue();
+void Dequeue();
+void Display();
+
+int Queue[100],n,choice;
 int front = -1;
 int rear = -1;
 
-// Insertion in Queue
-void Enqueue(int a[],int n)
+int main()
 {
-    if(rear==n-1)
+    printf("\nEnter the size of Queue less than 100: ");
+    scanf("%d",&n);
+
+    do
+    {  
+       printf("1.Insert \n2.Delete \n3.Display \n4.Exit \n");
+       scanf("%d",&choice);
+
+    switch(choice)
+    {
+        case 1:
+            Enqueue();
+            break;
+        case 2:
+            Dequeue();
+            break;
+        case 3:
+            Display();
+            break;
+        case 4:
+            printf("\nExited From the process\n");
+            break;
+        default:
+            printf("\nEnter a valid option\n");
+    }
+       
+   } while(choice != 4);
+
+    return 0;
+}
+
+// Insertion in Queue
+void Enqueue()
+{   
+    int ele;
+    if(rear >=n-1)
     {
         printf("\nQueue Overflow\n");
-        return ;
+        return;
     }
     
-    int ele;
-    printf("\nEnter the element to be inserted: ");
+   
+    printf("Enter the element to be inserted: ");
     scanf("%d",&ele);
     
     if(front==-1)
         front = front +1;
  
     rear = rear +1;
-    a[rear] = ele;
-    return;
+    Queue[rear] = ele;
 }
 
 // Deletion in Queue
-void Dequeue(int a[],int n)
+void Dequeue()
 {
     if(front==-1 || front>rear)
     {
         printf("\nQueue Underflow\n");
         return;
     }
-    
-    front = front +1;
-    return;
+    else
+    {
+       printf("Element Deleted is %d\n",Queue[front]);
+       front = front + 1;
+    }
 }
 
 // Displaying Queue
-void Display(int a[])
+void Display()
 {   
-    printf("\nElements of the Queue is:\n");
-
-    for(int i=front;i<=rear;i++)
-    {
-        printf("%d ",a[i]);
+    if(front==-1 || front>rear)
+        printf("Queue is empty\n");
+    
+    else
+    {   
+        printf("\n");
+        for(int i=front;i<=rear;i++)
+          {
+            printf("%d ",Queue[i]);
+          }
+        printf("\n");
     }
-    printf("\n");
     return;
-}
-
-
-int main()
-{
-    int n;
-
-    printf("1.For Inserting an element in a Queue\n");
-    printf("2.For Deleting an element from a Queue\n");
-    printf("3.For Viewing the whole Queue\n");
-    printf("4.To Exit\n");
-
-    while(1<10)
-    {
-         scanf("%d",&n);
-    switch(n)
-    {
-        case 1:
-            Enqueue(Queue,100);
-            printf("\nFor another operation enter the choice\n");
-            continue;
-        case 2:
-            Dequeue(Queue,100);
-            printf("\nFor another operation enter the choice\n");
-            continue;
-        case 3:
-            Display(Queue);
-            printf("\nFor another operation enter the choice\n");
-            continue;
-        case 4:
-            printf("\nExited From the process\n");
-            break;
-        default:
-            printf("\nEnter a valid option\n");
-            break;
-    }
-       break;
-   }
-
-    return 0;
 }
 
