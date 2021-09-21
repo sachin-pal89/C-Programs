@@ -1,6 +1,5 @@
 // Sachin - IT - 37
 #include<stdio.h>
-
 void Enqueue();
 void Dequeue();
 void Display();
@@ -31,14 +30,13 @@ int main()
             Display();
             break;
         case 4:
-            printf("\nExited From the process\n");
+            printf("\nExit");
             break;
         default:
             printf("\nEnter a valid option\n");
     }
        
    } while(choice != 4);
-
     return 0;
 }
 
